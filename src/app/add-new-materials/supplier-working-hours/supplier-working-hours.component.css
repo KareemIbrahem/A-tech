@@ -1,0 +1,11 @@
+.main-font {
+  font-size: 14px;
+}
+.btn-bg {
+  background-color: #f1f3f4;
+  border-radius: 50%;
+}
+.btn-c-bg {
+  background-color: #f1f3f4;
+  border-radius: 10px;
+}

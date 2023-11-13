@@ -1,0 +1,142 @@
+<div class="card py-3">
+  <div class="row">
+    <div class="mx-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >المورد متاح إلى</label
+      >
+      <div class="input-group mb-3 pe-4">
+        <input
+          type="number"
+          class="form-control"
+          aria-label="number input with dropdown button"
+        />
+        <button
+          class="btn btn-light dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          شهر
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">1</a></li>
+          <li><a class="dropdown-item" href="#">2</a></li>
+          <li><a class="dropdown-item" href="#">3</a></li>
+          <li><a class="dropdown-item" href="#">4</a></li>
+          <li><a class="dropdown-item" href="#">5</a></li>
+          <li><a class="dropdown-item" href="#">6</a></li>
+          <li><a class="dropdown-item" href="#">7</a></li>
+          <li><a class="dropdown-item" href="#">8</a></li>
+          <li><a class="dropdown-item" href="#">9</a></li>
+          <li><a class="dropdown-item" href="#">10</a></li>
+          <li><a class="dropdown-item" href="#">11</a></li>
+          <li><a class="dropdown-item" href="#">12</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-12"><p class="ps-3 main-font">وقت المورد</p></div>
+        <div class="col-12 ps-4">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              value="option1"
+              [(ngModel)]="selectedOption"
+              (change)="showCounter = false"
+            />
+            <label class="form-check-label" for="inlineRadio1"
+              >وقت الخدمة</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              value="option2"
+              [(ngModel)]="selectedOption"
+              (change)="showCounter = true"
+            />
+            <label class="form-check-label" for="inlineRadio2"
+              >الوقت ثابت</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4" *ngIf="showCounter">
+      <div class="input-group mt-4 pe-3">
+        <button
+          type="button"
+          class="input-group-text btn-bg"
+          (click)="increaseCounter()"
+        >
+          <img src="../../../assets/add.png" alt="" srcset="" />
+        </button>
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Counter Value"
+          [value]="counterValue"
+        />
+        <button
+          type="button"
+          class="input-group-text btn-bg"
+          (click)="decreaseCounter()"
+        >
+          <img src="../../../assets/minus.png" alt="" srcset="" />
+        </button>
+      </div>
+    </div>
+    <div class="col-8 mt-4 pe-2">
+      <div class="row">
+        <div class="col-12"><p class="ps-3 main-font">اختر نوع الموارد</p></div>
+        <div class="col-12 ps-4">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOption"
+              id="inlineRadio3"
+              value="option3"
+              [(ngModel)]="selectedOption1"
+            />
+            <label class="form-check-label main-font" for="inlineRadio3">
+              <img src="../../../assets/Vector.png" alt="" />
+              حجز واحد فقط
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOption"
+              id="inlineRadio4"
+              value="option4"
+              [(ngModel)]="selectedOption1"
+            />
+            <label class="form-check-label main-font" for="inlineRadio4">
+              <img src="../../../assets/Vector (1).png" alt="" />
+              <img src="../../../assets/Vector (2).png" alt="" />
+              اكثر من حجز
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-4 pe-4" *ngIf="selectedOption1 === 'option4'">
+      <input
+        type="number"
+        class="form-control"
+        id="exampleFormControlInput2"
+        placeholder=""
+        [value]="numValue + 'موعد'"
+      />
+    </div>
+  </div>
+</div>

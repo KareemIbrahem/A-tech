@@ -1,0 +1,82 @@
+<div class="card">
+  <div class="row py-3 ps-3">
+    <div class="col-12">
+      <button class="btn" (click)="switchLanguage('en')">English</button
+      ><button class="btn" (click)="switchLanguage('ar')">العربية</button>
+      <div>
+        <p class="main-font">{{ "supplierWorkingHours.select" | translate }}</p>
+      </div>
+      <div>
+        <p class="main-font">
+          {{ "supplierWorkingHours.configure" | translate }}
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-4 mt-2">
+      <div class="form-check form-switch mb-5" *ngFor="let day of daysOfWeek">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          [id]="'flexSwitchCheck' + daysOfWeek.indexOf(day)"
+        />
+        <label
+          class="form-check-label main-font ps-1"
+          [for]="'flexSwitchCheck' + daysOfWeek.indexOf(day)"
+        >
+          {{ day }}
+        </label>
+      </div>
+    </div>
+
+    <div class="col-10">
+      <div class="row mb-3" *ngFor="let timeField of timeFields; let i = index">
+        <div class="col-4">
+          <app-time-field
+            [label]="'وقت البدء'"
+            [time]="timeField?.startTime || ''"
+            (timeChange)="updateTimeField(i, 'startTime', $event)"
+          ></app-time-field>
+        </div>
+
+        <div class="col-4">
+          <app-time-field
+            [label]="'وقت الانتهاء'"
+            [time]="timeField?.endTime || ''"
+            (timeChange)="updateTimeField(i, 'endTime', $event)"
+          ></app-time-field>
+        </div>
+
+        <ng-container *ngIf="i === 0">
+          <div class="col-1 mt-3">
+            <button
+              type="button"
+              class="input-group-text btn-bg mt-4"
+              (click)="addTimeField()"
+            >
+              <img src="../../../assets/add1.png" alt="Add" />
+            </button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i > 0">
+          <div class="col-1 mt-3">
+            <button
+              type="button"
+              class="input-group-text btn-bg mt-4"
+              (click)="removeTimeField(i)"
+            >
+              <img src="../../../assets/del.png" alt="" srcset="" />
+            </button>
+          </div>
+        </ng-container>
+
+        <div class="col-1 mt-4">
+          <button type="button" class="input-group-text btn-c-bg mt-2">
+            <img src="../../../assets/Vector4.png" alt="" srcset="" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
